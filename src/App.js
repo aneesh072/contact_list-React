@@ -1,27 +1,32 @@
 import './App.css';
 import ContactCard from './components/ContactCard';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [results, setResults] = useState([]);
+  useEffect(() => {
+    fetch('https://randomuser.me/api/?results=5')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setResults(data.results);
+      });
+  }, []);
+
   return (
     <div>
-      <ContactCard
-        avatarUrl="https://via.placeholder.com/150"
-        name="Enis Karki"
-        email="aneeshkarki@yahoo.com"
-        age={24}
-      />
-      <ContactCard
-        avatarUrl="https://via.placeholder.com/150"
-        name="David Guatta"
-        email="david.guetta@yahoo.com"
-        age={36}
-      />
-      <ContactCard
-        avatarUrl="https://via.placeholder.com/150"
-        name="Post Malone"
-        email="p.malon@hotmail.com"
-        age={30}
-      />
+      {results.map((result, index) => {
+        return (
+          <ContactCard
+            avatarUrl={result.picture.large}
+            Fname={result.name.first}
+            Lname={result.name.last}
+            email={result.email}
+            age={result.dob.age}
+            key={index}
+          />
+        );
+      })}
     </div>
   );
 }
