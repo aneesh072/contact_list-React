@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import ContactCard from './components/ContactCard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ContactCard
+        avatarUrl="https://via.placeholder.com/150"
+        name="Enis Karki"
+        email="aneeshkarki@yahoo.com"
+        age={24}
+      />
+      <ContactCard
+        avatarUrl="https://via.placeholder.com/150"
+        name="David Guatta"
+        email="david.guetta@yahoo.com"
+        age={36}
+      />
+      <ContactCard
+        avatarUrl="https://via.placeholder.com/150"
+        name="Post Malone"
+        email="p.malon@hotmail.com"
+        age={30}
+      />
     </div>
   );
 }
